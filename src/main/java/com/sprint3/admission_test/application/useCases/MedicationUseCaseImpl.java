@@ -48,8 +48,7 @@ public class MedicationUseCaseImpl implements IMedicationUseCase {
                 .expirationDate(req.getExpirationDate())
                 .category(categoryOpt.get())
                 .build();
-        this.medicationRepository.save(medication);
-        return medication;
+        return this.medicationRepository.save(medication);
     }
 
     @Override

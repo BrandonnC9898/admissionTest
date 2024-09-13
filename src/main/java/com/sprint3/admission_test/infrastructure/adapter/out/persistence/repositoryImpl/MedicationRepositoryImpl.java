@@ -23,7 +23,6 @@ public class MedicationRepositoryImpl implements IMedicationRepository {
     }
 
     public Medication save(Medication medication) {
-        // TODO error handling
         return this.medicationJpaRepository.save(medication);
     }
 

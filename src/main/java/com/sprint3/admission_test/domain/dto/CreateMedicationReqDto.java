@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -34,4 +35,17 @@ public class CreateMedicationReqDto {
     @NotNull
     @Length(min = 3, max = 50)
     private String categoryName;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreateMedicationReqDto that = (CreateMedicationReqDto) o;
+        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(price, that.price) && Objects.equals(expirationDate, that.expirationDate) && Objects.equals(categoryName, that.categoryName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, price, expirationDate, categoryName);
+    }
 }
