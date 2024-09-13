@@ -18,4 +18,9 @@ public class MedicationRepositoryImpl implements IMedicationRepository {
     public Optional<Medication> findById(Long id) {
         return medicationJpaRepository.findById(id);
     }
+
+    public Medication save(Medication medication) {
+        // TODO error handling
+        return this.medicationJpaRepository.save(medication);
+    }
 }
