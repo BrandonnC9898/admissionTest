@@ -6,6 +6,9 @@ import com.sprint3.admission_test.infrastructure.adapter.out.persistence.jpaRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -22,5 +25,13 @@ public class MedicationRepositoryImpl implements IMedicationRepository {
     public Medication save(Medication medication) {
         // TODO error handling
         return this.medicationJpaRepository.save(medication);
+    }
+
+    @Override
+    public List<Medication> findByCategoryAndDateAfter(String category, LocalDate after) {
+        Iterable<Medication> medications = medicationJpaRepository.findByCategoryAndDateAfter(category, after);
+        List<Medication> result = new ArrayList<>();
+        medications.forEach(medication -> result.add(medication));
+        return result;
     }
 }
